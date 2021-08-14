@@ -18,8 +18,7 @@ var sketchProc = function (p) {
     var left;
     var right;
     var playing;
-    var alphabet;
-    var index;
+ 
 
 
     var setup = function () {
@@ -69,8 +68,7 @@ var sketchProc = function (p) {
       left = false;
       right = false;
       playing = true;
-      alphabet = "abcdefghijklmnopqrstuvwxyz";
-      index = 0;
+
     };
 
     /***********************
@@ -86,6 +84,7 @@ var sketchProc = function (p) {
         moveCamera();
         doPlatforms();
         image(player.img, player.x, player.y, player.w, player.h);
+        movePlayer()
       } else {
         drawGameOver();
       }
@@ -97,9 +96,7 @@ var sketchProc = function (p) {
     * 
     * ********************/
 
-    /*var input = function(platform) {
-    text(alphabet[0], platform.x, platform.y)
-    } */
+
 
     var drawGameOver = function () {
       fill(0, 0, 0, 10);
@@ -185,8 +182,8 @@ var sketchProc = function (p) {
         player.yspeed = -5;
       }
       for (var platform of platforms) {
-        if (collision(player, platform) && player.yspeed >= 0 && feet(player, platform)) {
-          // input(platform)
+        if (collision(player, platform) && player.yspeed >= 0 && feetOn(player, platform)) {
+
           player.yspeed = -5;
         }
       }
